@@ -37,6 +37,19 @@ class Mmahasiswa extends CI_Model
 		$this->db->where('id', $id_lama);
 		return $this->db->update('baru',$data);
 	}
+
+	public function jumlah(){
+		$hasil ="SELECT count(nim) as jumlah FROM baru";
+		$tampil = $this->db->query($hasil);
+		return $tampil->row()->jumlah;
+	}
+
+	public function log(){
+		$hasil ="SELECT count(nim) as jumlah FROM log";
+		$tampil = $this->db->query($hasil);
+		return $tampil->row()->jumlah;
+	}
+
 	public function hapus_mhs($id){
 		return $this->db->delete('baru',array('id' =>$id));
 	}
